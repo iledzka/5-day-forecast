@@ -14,23 +14,33 @@ function handleError(e) {
   throw e;
 }
 
-function validateCity(city, cityName, countryCode) {
-  if (!city || city.name !== cityName || city.country !== countryCode) {
-    throw new Error(`Couldn't find city ${cityName}, ${countryCode}`);
+function validateCity(city, requestedCity) {
+  if (!city) {
+    throw new Error(`Couldn't find requested city.`);
   }
   if (city.length > 1) {
     throw new Error("Invalid number of cities returned");
   }
 }
 
-export default async function getResultsForACity(cityName, countryCode) {
+function matches(obj, source) {
+  return Object.keys(source).every(key => obj[key] && obj[key] === source[key]);
+}
+
+function findCity(requestedCity) {
+  return Object.values(cityList)
+    .filter(cityObject => matches(cityObject, requestedCity))
+    .shift();
+}
+
+async function getForecast(requestedCity) {
   try {
-    const city = Object.values(cityList)
-      .filter(
-        ({ name, country }) => name === cityName && country === countryCode
-      )
-      .shift();
-    validateCity(city, cityName, countryCode);
+    let city = requestedCity;
+    if (!requestedCity.id) {
+      city = findCity(requestedCity);
+      validateCity(city, requestedCity);
+    }
+
     const url = createRequestForACity(city.id);
 
     const response = await fetch(url());
@@ -48,3 +58,6 @@ export default async function getResultsForACity(cityName, countryCode) {
     handleError(e);
   }
 }
+export default {
+  byCityAndCountry: (name, country) => getForecast({ name, country })
+};

@@ -2,7 +2,7 @@ import Results from "../forecast-api/Results";
 import mockFetch from "../../__mocks__/fetch";
 
 test("returns 5 day forecast for a city from OpenWeather", async done => {
-  const city = "Edinburgh";
+  const name = "Edinburgh";
   const country = "GB";
   const data = {
     cod: "200",
@@ -10,7 +10,7 @@ test("returns 5 day forecast for a city from OpenWeather", async done => {
     cnt: 40
   };
   window.fetch = mockFetch(data);
-  const forecastData = await Results(city, country);
+  const forecastData = await Results.byCityAndCountry(name, country);
   expect(window.fetch).toHaveBeenCalledTimes(1);
   window.fetch.mockClear();
   expect(forecastData).toMatchObject(data);
@@ -18,7 +18,7 @@ test("returns 5 day forecast for a city from OpenWeather", async done => {
 });
 
 test("throws error", async done => {
-  const city = "";
+  const name = "";
   const country = "";
   const data = {
     cod: "200",
@@ -27,12 +27,12 @@ test("throws error", async done => {
   };
   try {
     window.fetch = mockFetch(data);
-    await Results(city, country);
+    await Results.byCityAndCountry(name, country);
     expect(window.fetch).toHaveBeenCalledTimes(1);
     window.fetch.mockClear();
   } catch (e) {
     expect(e).toBeInstanceOf(Error);
-    expect(e).toEqual(Error("Couldn't find city , "));
+    expect(e).toEqual(Error("Couldn't find requested city."));
   }
 
   done();
