@@ -14,18 +14,24 @@ function handleError(e) {
   throw e;
 }
 
+function validateCity(city, cityName, countryCode) {
+  if (!city || city.name !== cityName || city.country !== countryCode) {
+    throw new Error(`Couldn't find city ${cityName}, ${countryCode}`);
+  }
+  if (city.length > 1) {
+    throw new Error("Invalid number of cities returned");
+  }
+}
+
 export default async function getResultsForACity(cityName, countryCode) {
   try {
-    const city = Object.values(cityList).filter(
-      ({ name, country }) => name === cityName && country === countryCode
-    );
-    if (city.length === 0 || !city) {
-      throw new Error(`Couldn't find city ${cityName}, ${countryCode}`);
-    }
-    if (city.length > 1) {
-      throw new Error("Invalid number of cities returned");
-    }
-    const url = createRequestForACity(city.shift().id);
+    const city = Object.values(cityList)
+      .filter(
+        ({ name, country }) => name === cityName && country === countryCode
+      )
+      .shift();
+    validateCity(city, cityName, countryCode);
+    const url = createRequestForACity(city.id);
 
     const response = await fetch(url());
 
