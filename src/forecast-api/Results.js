@@ -19,8 +19,7 @@ export default async function getResultsForACity(cityName, countryCode) {
     const city = Object.values(cityList).filter(
       ({ name, country }) => name === cityName && country === countryCode
     );
-
-    if (!city) {
+    if (city.length === 0 || !city) {
       throw new Error(`Couldn't find city ${cityName}, ${countryCode}`);
     }
     if (city.length > 1) {
@@ -29,7 +28,7 @@ export default async function getResultsForACity(cityName, countryCode) {
     const url = createRequestForACity(city.shift().id);
 
     const response = await fetch(url());
-    console.log(response);
+
     if (!response.ok) {
       throw new Error(response.statusText);
     }
