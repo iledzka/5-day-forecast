@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/5-day-forecast/static/css/main.8fbab5b8.chunk.css",
+    "main.js": "/5-day-forecast/static/js/main.044d8244.chunk.js",
+    "main.js.map": "/5-day-forecast/static/js/main.044d8244.chunk.js.map",
+    "runtime-main.js": "/5-day-forecast/static/js/runtime-main.499698f8.js",
+    "runtime-main.js.map": "/5-day-forecast/static/js/runtime-main.499698f8.js.map",
+    "static/js/2.db075623.chunk.js": "/5-day-forecast/static/js/2.db075623.chunk.js",
+    "static/js/2.db075623.chunk.js.map": "/5-day-forecast/static/js/2.db075623.chunk.js.map",
+    "index.html": "/5-day-forecast/index.html",
+    "precache-manifest.7125016e8ecb16306de5a713d4680607.js": "/5-day-forecast/precache-manifest.7125016e8ecb16306de5a713d4680607.js",
+    "service-worker.js": "/5-day-forecast/service-worker.js",
+    "static/css/main.8fbab5b8.chunk.css.map": "/5-day-forecast/static/css/main.8fbab5b8.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.499698f8.js",
+    "static/js/2.db075623.chunk.js",
+    "static/css/main.8fbab5b8.chunk.css",
+    "static/js/main.044d8244.chunk.js"
+  ]
+}
