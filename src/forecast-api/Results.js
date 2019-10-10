@@ -23,14 +23,18 @@ function validateCity(city, requestedCity) {
   }
 }
 
-function findCity(requestedCity) {
-  const keys = Object.keys(requestedCity);
-
+function getCountries() {
   let listOfCities = Object.values(cityList);
   if (Array.isArray(listOfCities[0])) {
     listOfCities = listOfCities.shift();
   }
-  return listOfCities
+  return listOfCities;
+}
+
+function findCity(requestedCity) {
+  const keys = Object.keys(requestedCity);
+
+  return getCountries()
     .filter(o => keys.every(key => o[key] && o[key] === requestedCity[key]))
     .shift();
 }
@@ -60,6 +64,8 @@ async function getForecast(requestedCity) {
     handleError(e);
   }
 }
+
 export default {
-  byCityAndCountry: (name, country) => getForecast({ name, country })
+  byCityAndCountry: (name, country) => getForecast({ name, country }),
+  getCountries
 };
