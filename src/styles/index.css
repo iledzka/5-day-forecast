@@ -1,13 +1,306 @@
-body {
+* {
+  box-sizing: border-box;
+}
+
+* :after,
+* :before {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+main,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  vertical-align: baseline;
+  letter-spacing: -0.009em;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary,
+main {
+  display: block;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: subpixel-antialiased;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style-type: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+strong,
+b {
+  font-weight: bold;
+}
+
+u {
+  text-decoration: underline;
+}
+
+pre,
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: Monaco, Courier, monospace;
+}
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+img {
+  -ms-interpolation-mode: bicubic;
+  width: 100%;
+  height: auto;
+}
+
+:root {
+  --font-size: 1rem;
+  --font-height: 1.8;
+  --font-weight: normal;
+  --font-family: -apple-system, sans-serif;
+  --bg: -webkit-linear-gradient(to right, #c4e0e5, #4ca1af);
+  --text: white;
+  --text-dark: black;
+  --spacer: 2rem;
+  --border: 2px solid white;
+  --transition: transform 200ms ease-out;
+  --center: center;
+  font-family: var(--font-family);
+  font-size: var(--font-height);
+  font-weight: var(--font-weight);
+  color: var(--text);
+  text-align: var(--center);
+  text-rendering: geometricPrecision;
+}
+
+body {
+  padding: var(--spacer);
+  text-align: var(--center);
+  background: #4ca1af; /* fallback for old browsers */
+  background: linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+button {
+  position: absolute;
+  right: var(--spacer);
+  border: var(--border);
+  display: inline-block;
+  background-color: transparent;
+  border-radius: 30px;
+  color: var(--text);
+  text-align: center;
+  font-size: var(--font-size);
+  padding: calc(var(--spacer) / 2);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: var(--transition);
+}
+
+button:hover {
+  background-color: var(--text);
+  color: var(--text-dark);
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: c;
+  justify-content: center;
+  font-size: calc(var(--font-size) + 2vmin);
+  color: white;
+}
+
+.select {
+  color: var(--text-dark);
+  padding-top: var(--spacer);
+  width: 30%;
+  margin: auto;
+}
+
+.rows {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.rows .day {
+  padding-right: var(--spacer);
+  padding-left: var(--spacer);
+}
+
+.rows .row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rows .date {
+  color: #747474;
+  font-size: calc(var(--font-size) + 2vmin);
+}
+
+.rows .row .hours {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.row > label.date {
+  margin: var(--spacer) 0 var(--spacer) var(--spacer);
+  color: var(--text-dark);
+}
+
+.day {
+  width: 100%;
+}
+
+.day .description {
+  color: var(--text-dark);
+  text-transform: capitalize;
+  padding-bottom: calc(var(--spacer) / 2);
+}
+
+.day .time {
+  color: #f2fcfe;
+  font-size: calc(var(--font-size) + 2vmin);
+}
+
+.day .temperature {
+  font-size: calc(var(--font-size) + 2vmin);
 }
