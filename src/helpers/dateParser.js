@@ -8,8 +8,8 @@ const getDate = (timestamp, timezone, format) =>
 
 export default {
   getFormattedLocalDate: (timestamp, timezone) =>
-    getDate(timestamp, timezone, "D MMMM, YYYY"),
+    getDate(timestamp, timezone, "dddd"),
   getFormattedLocalTime: (timestamp, timezone) =>
-    getDate(timestamp, timezone, "HH:mm A"),
+    getDate(timestamp, timezone, "HH"),
   getDayNumber: (timestamp, timezone) => getDate(timestamp, timezone, "D")
 };
