@@ -1,6 +1,5 @@
 import React from "react";
 import dateParser from "../helpers/dateParser";
-import "../styles/Day.css";
 
 const Day = props => {
   const { day, timezone } = props;
@@ -15,7 +14,7 @@ const Day = props => {
         </span>
       </p>
       <img
-        src={`http://openweathermap.org/img/w/${weather.icon}.png`}
+        src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
         alt={weather.description}
       />
       <p className="description">

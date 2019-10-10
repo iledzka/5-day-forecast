@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Results from "../forecast-api/Results";
 import Rows from "./Rows";
 import SearchField from "./SearchField";
-import "../styles/Search.css";
 
 const Search = () => {
   const [timezone, updateTimezone] = useState("");
@@ -30,18 +29,18 @@ const Search = () => {
       disabled={selectedOption === null}
       onClick={() => updateSelectedOption(null)}
     >
-      <span>Change city</span>
+      <span>Change Location</span>
     </button>
   );
 
-  const title = `5 day forecast${
+  const title = `5 Day Forecast${
     selectedOption ? ` for ${selectedOption.label}` : ""
   }`;
 
   return (
     <React.Fragment>
       <div className="search">
-        <p>{title}</p>
+        <h2>{title}</h2>
         {selectedOption !== null && renderButton()}
       </div>
       {selectedOption === null ? (

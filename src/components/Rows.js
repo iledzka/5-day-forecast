@@ -1,7 +1,6 @@
 import React from "react";
 import dateParser from "../helpers/dateParser";
 import Row from "./Row";
-import "../styles/Rows.css";
 
 const Rows = props => {
   const { forecastData, timezone } = props;
