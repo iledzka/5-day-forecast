@@ -5,7 +5,7 @@ import SearchField from "./SearchField";
 import "../styles/Search.css";
 
 const Search = () => {
-  const [timezone, updateTimezone] = useState("3600");
+  const [timezone, updateTimezone] = useState("");
   const [forecastData, updateForecastData] = useState([]);
   const [selectedOption, updateSelectedOption] = useState(null);
 
