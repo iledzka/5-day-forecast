@@ -1,9 +1,9 @@
 import React from "react";
 import dateParser from "../helpers/dateParser";
-import Day from "./Day";
-import "../styles/MainPanel.css";
+import Row from "./Row";
+import "../styles/Rows.css";
 
-const MainPanel = props => {
+const Rows = props => {
   const { forecastData, timezone } = props;
 
   const renderRows = () => {
@@ -18,7 +18,9 @@ const MainPanel = props => {
       const newDayNum = dateParser.getDayNumber(day.dt, timezone);
 
       if (dayNumber !== newDayNum) {
-        rows.push(<Row days={daysInARow} key={`${i}-${day.dt}`} />);
+        rows.push(
+          <Row days={daysInARow} timezone={timezone} key={`${i}-${day.dt}`} />
+        );
         dayNumber = newDayNum;
         daysInARow = [];
         daysInARow.push(day);
@@ -29,27 +31,11 @@ const MainPanel = props => {
     return rows;
   };
 
-  const Row = props => {
-    const { days } = props;
-    return (
-      <div className="row">
-        <label className="date">
-          {dateParser.getFormattedLocalDate(days[0].dt, timezone)}
-        </label>
-        <div className="hours">
-          {days.map(day => (
-            <Day key={day.dt} day={day} timezone={timezone} />
-          ))}
-        </div>
-      </div>
-    );
-  };
-
   return (
-    <div className="main-panel">
+    <div className="rows">
       <div>{renderRows()}</div>
     </div>
   );
 };
 
-export default MainPanel;
+export default Rows;

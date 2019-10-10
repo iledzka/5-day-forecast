@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Results from "../forecast-api/Results";
-import MainPanel from "./MainPanel";
+import Rows from "./Rows";
 import SearchField from "./SearchField";
 import "../styles/Search.css";
 
@@ -25,18 +25,24 @@ const Search = () => {
     fetchData();
   }, [selectedOption]);
 
+  const renderButton = () => (
+    <button
+      disabled={selectedOption === null}
+      onClick={() => updateSelectedOption(null)}
+    >
+      <span>Change city</span>
+    </button>
+  );
+
+  const title = `5 day forecast${
+    selectedOption ? ` for ${selectedOption.label}` : ""
+  }`;
+
   return (
     <React.Fragment>
       <div className="search">
-        <p>5 day forecast{selectedOption && ` for ${selectedOption.label}`}</p>
-        {selectedOption !== null && (
-          <button
-            disabled={selectedOption === null}
-            onClick={() => updateSelectedOption(null)}
-          >
-            <span>Change city</span>
-          </button>
-        )}
+        <p>{title}</p>
+        {selectedOption !== null && renderButton()}
       </div>
       {selectedOption === null ? (
         <SearchField
@@ -44,7 +50,7 @@ const Search = () => {
           handleChange={updateSelectedOption}
         />
       ) : (
-        <MainPanel forecastData={forecastData} timezone={timezone} />
+        <Rows forecastData={forecastData} timezone={timezone} />
       )}
     </React.Fragment>
   );
