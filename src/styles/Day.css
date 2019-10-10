@@ -1,3 +1,13 @@
 .day {
-  background-color: beige;
+  width: 110px;
+}
+
+.day .description {
+  color: #1d4350;
+}
+
+.day .time {
+  color: #f2fcfe;
+  font-size: calc(12px + 2vmin);
+  font-weight: lighter;
 }
