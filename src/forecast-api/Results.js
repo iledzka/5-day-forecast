@@ -16,20 +16,22 @@ function handleError(e) {
 
 function validateCity(city, requestedCity) {
   if (!city) {
-    throw new Error(`Couldn't find requested city.`);
+    throw new Error("Couldn't find requested city.");
   }
   if (city.length > 1) {
     throw new Error("Invalid number of cities returned");
   }
 }
 
-function matches(obj, source) {
-  return Object.keys(source).every(key => obj[key] && obj[key] === source[key]);
-}
-
 function findCity(requestedCity) {
-  return Object.values(cityList)
-    .filter(cityObject => matches(cityObject, requestedCity))
+  const keys = Object.keys(requestedCity);
+
+  let listOfCities = Object.values(cityList);
+  if (Array.isArray(listOfCities[0])) {
+    listOfCities = listOfCities.shift();
+  }
+  return listOfCities
+    .filter(o => keys.every(key => o[key] && o[key] === requestedCity[key]))
     .shift();
 }
 
