@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import Results from "../forecast-api/Results";
+import "../styles/SearchField.css";
 
 const SearchField = props => {
   const { selectedOption, handleChange } = props;
@@ -14,9 +15,11 @@ const SearchField = props => {
 
   return (
     <Select
+      className="select"
       value={selectedOption}
       onChange={handleChange}
       options={getOptions(Results.getCities())}
+      placeholder={"Select City..."}
     />
   );
 };
