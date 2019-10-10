@@ -1,4 +1,4 @@
-import * as cityList from "./city.list.json";
+import cities from "./cities";
 
 function createRequestForACity(cityId) {
   return () => {
@@ -23,18 +23,10 @@ function validateCity(city, requestedCity) {
   }
 }
 
-function getCities() {
-  let listOfCities = Object.values(cityList);
-  if (Array.isArray(listOfCities[0])) {
-    listOfCities = listOfCities.shift();
-  }
-  return listOfCities;
-}
-
 function findCity(requestedCity) {
   const keys = Object.keys(requestedCity);
 
-  return getCities()
+  return cities()
     .filter(o => keys.every(key => o[key] && o[key] === requestedCity[key]))
     .shift();
 }
@@ -67,5 +59,6 @@ async function getForecast(requestedCity) {
 
 export default {
   byCityAndCountry: (name, country) => getForecast({ name, country }),
-  getCities
+  getById: id => getForecast({ id }),
+  getCities: cities
 };
