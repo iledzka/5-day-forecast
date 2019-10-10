@@ -1,42 +1,48 @@
 import React, { useState, useEffect } from "react";
 import Results from "../forecast-api/Results";
 import MainPanel from "./MainPanel";
+import SearchField from "./SearchField";
 import "../styles/Search.css";
 
 const Search = () => {
-  const [city, updateCity] = useState("Edinburgh");
-  const [country, updateCountry] = useState("GB");
   const [timezone, updateTimezone] = useState("3600");
   const [forecastData, updateForecastData] = useState([]);
-  const [showSearchField, updateShowSearch] = useState(true);
+  const [selectedOption, updateSelectedOption] = useState(null);
 
   useEffect(() => {
     updateForecastData([]);
     const fetchData = async () => {
-      try {
-        const data = await Results.byCityAndCountry(city, country);
-        updateForecastData(data.list);
-        updateTimezone(data.city.timezone);
-      } catch (e) {
-        console.error(e);
+      if (selectedOption) {
+        try {
+          const data = await Results.getById(selectedOption.id);
+          updateForecastData(data.list);
+          updateTimezone(data.city.timezone);
+        } catch (e) {
+          console.error(e);
+        }
       }
     };
     fetchData();
-  }, [city, country]);
+  }, [selectedOption]);
+
   return (
     <React.Fragment>
       <div className="search">
-        <p>
-          5 day forecast for {city}, {country}
-        </p>
-        {!showSearchField && (
-          <button disabled={showSearchField} onClick={() => {}}>
+        <p>5 day forecast{selectedOption && ` for ${selectedOption.label}`}</p>
+        {selectedOption !== null && (
+          <button
+            disabled={selectedOption === null}
+            onClick={() => updateSelectedOption(null)}
+          >
             <span>Change city</span>
           </button>
         )}
       </div>
-      {showSearchField ? (
-        <div>tegwygwu</div>
+      {selectedOption === null ? (
+        <SearchField
+          selectedOption={selectedOption}
+          handleChange={updateSelectedOption}
+        />
       ) : (
         <MainPanel forecastData={forecastData} timezone={timezone} />
       )}
