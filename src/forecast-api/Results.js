@@ -3,7 +3,7 @@ import cities from "./cities";
 function createRequestForACity(cityId) {
   return () => {
     const apiKey = "7596b7d11eb133bcb7f3e994fbb7a0ba";
-    const apiRequestString = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
+    const apiRequestString = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
 
     return process.env.REACT_APP_API || apiRequestString;
   };
