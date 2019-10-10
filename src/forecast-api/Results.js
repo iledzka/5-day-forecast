@@ -23,7 +23,7 @@ function validateCity(city, requestedCity) {
   }
 }
 
-function getCountries() {
+function getCities() {
   let listOfCities = Object.values(cityList);
   if (Array.isArray(listOfCities[0])) {
     listOfCities = listOfCities.shift();
@@ -34,7 +34,7 @@ function getCountries() {
 function findCity(requestedCity) {
   const keys = Object.keys(requestedCity);
 
-  return getCountries()
+  return getCities()
     .filter(o => keys.every(key => o[key] && o[key] === requestedCity[key]))
     .shift();
 }
@@ -67,5 +67,5 @@ async function getForecast(requestedCity) {
 
 export default {
   byCityAndCountry: (name, country) => getForecast({ name, country }),
-  getCountries
+  getCities
 };
