@@ -9,15 +9,20 @@ const Day = props => {
 
   return (
     <div className="day">
-      <span>
-        <strong>{dateParser.getFormattedLocalTime(day.dt, timezone)}</strong>
-      </span>
+      <p className="time">
+        <span>
+          <strong>{dateParser.getFormattedLocalTime(day.dt, timezone)}</strong>
+        </span>
+      </p>
       <img
         src={`http://openweathermap.org/img/w/${weather.icon}.png`}
         alt={weather.description}
       />
+      <p className="description">
+        <span>{weather.description}</span>
+      </p>
       <p>
-        <span className="temperature">{temp}</span>
+        <span className="temperature">{temp}&deg;C</span>
       </p>
     </div>
   );
