@@ -83,6 +83,8 @@ The app was build using
 
 #### React.js
 
+I used
+
 #### ES6
 
 #### HTML5
@@ -91,7 +93,7 @@ The app was build using
 
 ## Libraries used
 
-[Moment.js](https://github.com/JedWatson/react-select)
+[Moment.js](https://github.com/JedWatson/react-select)<br />
 [react-select](https://github.com/JedWatson/react-select)
 
 ## Future Enhancements
