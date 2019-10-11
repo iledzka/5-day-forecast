@@ -1,68 +1,90 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 5 Day Forecast
 
-## Available Scripts
+Check 5 day forecast for a location of your choice!
 
-In the project directory, you can run:
+Forecast data is provided by [Open Weather](https://openweathermap.or)
 
-### `npm start`
+To view the project: [https://iledzka.github.io/5-day-forecast/](https://iledzka.github.io/5-day-forecast)
 
-Runs the app in the development mode.<br />
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
+## Prerequisites
+
+```
+Install Node.js and NPM via [nodejs.org](nodejs.org/en/) (Project was built using version 10.16.3 LTS)
+```
+
+```
+Install React.js by typing in your terminal: sudo npm install -g create-react-app
+```
+
+## Getting Started
+
+To run the project on your machine, you need to have Git installed.
+
+Clone the project by running:
+```
+git clone https://github.com/iledzka/5-day-forecast.git
+```
+
+Inside the '5-day-forecast' folder, run:
+```
+npm install
+```
+
+The project can be run locally by running in the same directory:
+```
+npm run start
+```
+
+Runs the app in development mode.<br />
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## Running the Tests
 
+Tests were written using [Jest](https://jestjs.io/).
+
+To run test:
+```
+npm test
+```
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Test Coverage
 
+Currently, the unit tests have very limited coverage. The current implementation has a call to the API and is tested by mocking and testing fetch. This needs to be extended to test more edge cases.
+
+## Deployment
+
+To run the build step:
+```
+npm run build
+```
 Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It correctly bundles React in production mode and optimises the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+After this, the  app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Future Enhancements
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+With more time, I would like to make this page to be fully responsive on multiple displays sizes. This could be achieved by using CSS Grid instead of Flexbox.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Testing
+I would like to include more comprehensive test coverage. I'd like to use Enzyme to also test the React Components output.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### User Interface
+Currently, the dashboard has a minimal styling and displays only time, description of the weather conditions, and temperature. This could be enhanced to include more data, such as pressure, wind speed, sunset, and sunrise times, etc. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Another possible improvement is to create an interface that would be displayed to the user if the Open Weather API was unavailable.
 
-## Learn More
+### API keys
+Currently, the API key is hardcoded inside the source (or can be supplied by providing a new API URL via REACT_APP_API_URL). Ideally, the API URL and key would be externalised and provided via environment variable during the deployment time.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### List of Locations
+The locations that appear in the search box are hardcoded in a file inside the project. Ideally, I would write a backend service to asynchronously query the database as a user types, which would allow for having more locations to autocomplete. I could achieve this by writing a REST API endpoint in Node.js. 
