@@ -7,8 +7,7 @@ const getDate = (timestamp, timezone, format) =>
     .format(format);
 
 export default {
-  getFormattedLocalDate: (timestamp, timezone) =>
-    getDate(timestamp, timezone, "dddd"),
+  getWeekday: (timestamp, timezone) => getDate(timestamp, timezone, "dddd"),
   getFormattedLocalTime: (timestamp, timezone) =>
     getDate(timestamp, timezone, "HH"),
   getDayNumber: (timestamp, timezone) => getDate(timestamp, timezone, "D")
