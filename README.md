@@ -81,13 +81,13 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 The app was build using
 
-# React.js
+#### React.js
 
-# ES6
+#### ES6
 
-# HTML5
+#### HTML5
 
-# CSS3
+#### CSS3
 
 ## Libraries used
 
