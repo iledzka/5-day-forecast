@@ -83,8 +83,6 @@ The app was build using
 
 #### React.js
 
-I used
-
 #### ES6
 
 #### HTML5
