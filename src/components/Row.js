@@ -7,7 +7,7 @@ const Row = props => {
   return (
     <div className="row">
       <label className="date">
-        {dateParser.getFormattedLocalDate(days[0].dt, timezone)}
+        {dateParser.getWeekday(days[0].dt, timezone)}
       </label>
       <div className="hours">
         {days.map(day => (
