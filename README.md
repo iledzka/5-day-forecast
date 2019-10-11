@@ -91,7 +91,8 @@ The app was build using
 
 ## Libraries used
 
-## [react-select](https://github.com/JedWatson/react-select)
+[Moment.js]{https://github.com/JedWatson/react-select}
+[react-select](https://github.com/JedWatson/react-select)
 
 ## Future Enhancements
 
